@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviviendo al Río Fucha</title>
+
+<link rel="icon" type="image/png" href="favicon.png"> 
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #e6f4ea;
+  color: #034c3c;
+}
+
+/* ---- ENCABEZADO (LOGO IZQUIERDA + TÍTULO CENTRADO) ---- */
+header {
+  background: linear-gradient(to right, #1e8449, #117a65);
+  color: white;
+  padding: 50px 40px; /* 🔸 Aumentado: da más altura al área verde */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra el título */
+  position: relative;
+}
+
+/* Contenedor del logo (alineado a la izquierda) */
+.logo-container {
+  position: absolute;
+  left: 50px; /* Espacio lateral */
+  top: 50%;
+  transform: translateY(-50%); /* Centra verticalmente el logo */
+}
+
+/* Tamaño del logo */
+header img {
+  max-width: 220px; /* 🔸 Un poco más grande */
+  height: auto;
+}
+
+/* Estilo del título */
+header h1 {
+  font-size: 36px;
+  margin: 0;
+  text-align: center;
+}
+
+/* ---- SLIDER PRINCIPAL ---- */
+.slider {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background: #c8f7c5; /* fondo verde claro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slides {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  animation: slide 24s infinite ease-in-out;
+}
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide img {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  border: 4px solid #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.caption {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-size: 28px;
+}
+@keyframes slide {
+  0% { transform: translateX(0%); }
+  33% { transform: translateX(0%); }
+  40% { transform: translateX(-100%); }
+  73% { transform: translateX(-100%); }
+  80% { transform: translateX(-200%); }
+  100% { transform: translateX(-200%); }
+}
+
+/* ---- SECCIONES ---- */
+section {
+  padding: 40px 60px;
+}
+h2 {
+  color: #0b5345;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ---- BLOQUES DE CONTENIDO (Estilo general) ---- */
+.content-block {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 30px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  padding: 20px;
+}
+
+/* BLOQUES COMPACTOS: ESTILO para hacer los cuadros más pequeños y centrados */
+.content-block.compact-block {
+  /* Definir un ancho máximo para hacerlo más pequeño */
+  max-width: 800px; 
+  /* Centrar el bloque en la sección */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-block img {
+  width: 220px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.content-block p {
+  flex: 1;
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* ---- GALERÍA ---- */
+.gallery {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.gallery-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 10px;
+  padding: 10px;
+  width: 80%;
+}
+.gallery-container::-webkit-scrollbar {
+  display: none;
+}
+.gallery img {
+  width: 260px;
+  height: 160px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 10;
+}
+.left-arrow { left: 20px; }
+.right-arrow { right: 20px; }
+
+/* ---- VIDEOS (CAMBIOS APLICADOS AQUÍ) ---- */
+.video-section {
+  text-align: center;
+  padding: 40px 0;
+}
+.video-section video {
+  width: 90%;
+  max-width: 700px; /* Reducido para ser más pequeño */
+  height: 394px; /* Altura calculada para una proporción 16:9 con max-width 700px (700 * 9/16 = 393.75) */
+  border: 4px solid #a3e4d7; /* Borde verde claro */
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* ---- JUEGO INTERACTIVO (sin cambios) ---- */
+#game {
+  text-align: center;
+  padding: 40px;
+  background-color: #d5f5e3;
+  border-radius: 20px;
+  margin: 50px auto;
+  width: 80%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+#river {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(to right, #5dade2, #85c1e9);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+/* items como fichas emoji */
+.item {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  font-size: 36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,0.9);
+  border-radius: 12px;
+  cursor: grab;
+  transition: transform 0.2s;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+.item:active { cursor: grabbing; }
+.item:hover { transform: scale(1.08); }
+
+.dropzone {
+  width: 140px;
+  height: 120px;
+  border-radius: 12px;
+  background-color: #a3e4d7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+.dropzone:hover {
+  transform: scale(1.05);
+  background-color: #76d7c4;
+}
+
+/* AJUSTE PARA EL TEXTO PEQUEÑO EN LA ZONA DE DRAG */
+.dropzone small {
+  font-size: 14px; /* Ajuste del tamaño de la fuente para que sea más pequeña */
+  line-height: 1.2;
+}
+/* FIN AJUSTE */
+
+#score {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #0b5345;
+}
+
+/* celebración final (muñequito) */
+#celebration {
+  display: none;
+  margin-top: 20px;
+  font-size: 48px;
+  text-align: center;
+}
+#celebration p { font-size: 22px; margin-top: 10px; color: #0b5345; font-weight: bold; }
+footer {
+  background: #117a65;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo-container">
+    <img src="f30c94cb-6763-4b30-b332-17f36c684566.jpg" alt="Logo Río Fucha: Recuperar + Restaurar + Revivir">
+  </div>
+  <h1>Reviviendo al Río Fucha</h1>
+</header>
+
+<div class="slider">
+  <div class="slides">
+    <div class="slide"><img src="slider-4-slide-1-1920x678 - copia.jpg" alt="Recuperar"><div class="caption">Recuperar</div></div>
+    <div class="slide"><img src="slider-4-slide-2-1920x678.jpg" alt="Restaurar"><div class="caption">Restaurar</div></div>
+    <div class="slide"><img src="slider-4-slide-3-1920x678.jpg" alt="Revivir"><div class="caption">Revivir</div></div>
+  </div>
+</div>
+
+<section>
+  <h2>Historia del Río Fucha</h2>
+  <div class="content-block compact-block">
+    <img src="521bd10d-dfa5-4153-b4d1-a6752a674723.jpg" alt="Origen">
+    <p>El Río Fucha, cuyo nombre viene del idioma muysccubun y significa “mi buena mujer” o “la hembra buena”, nace en los Cerros Orientales de Bogotá, cerca del páramo de Cruz Verde. En tiempos antiguos, este río fue muy importante para los muiscas, los primeros habitantes de la sabana de Bogotá. Ellos consideraban los ríos y lagunas como lugares sagrados, pues creían que eran el hogar de los dioses del agua. El Fucha, junto con los ríos Tunjuelo y Salitre, formaba parte del sistema natural que alimentaba la gran laguna de Bogotá, donde los muiscas cultivaban, pescaban y realizaban rituales para agradecer a la naturaleza.</p>
+  </div>
+  <div class="content-block compact-block">
+    <img src="0d582509-b98f-4dc8-8f90-31a21666dba6.jpg" alt="Contaminación">
+    <p>Con la llegada de los españoles y el crecimiento de la ciudad, el uso del río cambió por completo. Durante siglos, el Fucha fue usado para obtener agua y lavar ropa, pero poco a poco se convirtió en un vertedero. En el siglo XX, con la expansión urbana e industrial, muchas fábricas y viviendas comenzaron a arrojar sus desechos al río. Además, la falta de alcantarillado y el mal manejo de basuras hicieron que sus aguas se llenaran de residuos químicos, basura y aguas negras. Lo que antes era un río limpio y lleno de vida, se transformó en un río oscuro, con malos olores y casi sin peces.</p>
+  </div>
+  <div class="content-block compact-block">
+    <img src="10e2fe08-dd20-4f6b-8487-0de3ed8a3369.jpg" alt="Actualidad">
+    <p>Hoy en día, el Río Fucha sigue atravesando gran parte de Bogotá, desde los Cerros Orientales hasta el río Bogotá, recorriendo localidades como San Cristóbal, Antonio Nariño, Rafael Uribe Uribe y Kennedy. Aunque todavía sufre por la contaminación, en los últimos años se han hecho proyectos de recuperación ambiental, limpieza y reforestación de sus rondas. Comunidades, colegios y organizaciones han participado en campañas para “revivir al Río Fucha”, promoviendo el cuidado del agua, la siembra de árboles y el respeto por la naturaleza. Gracias a estos esfuerzos, el río poco a poco está recuperando parte de su belleza y se busca que en el futuro vuelva a ser un símbolo de vida y equilibrio con el ambiente</p>
+  </div>
+</section>
+
+<section>
+  <h2>El Lago San Cristóbal: Un Reflejo de la Naturaleza Urbana</h2>
+  <div class="content-block compact-block">
+    <img src="e:\Modificación pagina Rio - Emilee\pagina\img lago .jpg" alt="Río Fucha en Bogotá">
+    <p>Hace más de cien años, en la localidad de San Cristóbal en Bogotá, existió un hermoso lago artificial. Fue creado hacia 1910 por un hacendado llamado Ernesto González, quien aprovechó las aguas del río Fucha para formar un sitio de recreo.
+
+Durante las décadas de 1930 a 1960, el Lago de San Cristóbal se volvió muy popular: las familias llegaban en tranvía para pasear en bote, comer y disfrutar de la música. Era uno de los lugares más alegres de la ciudad.
+
+Con el tiempo, la urbanización hizo que el lago desapareciera poco a poco, hasta quedar solo en el recuerdo. Hoy su historia nos recuerda la importancia de cuidar los espacios naturales y preservar la memoria de nuestra ciudad</p>
+  </div>
+</section>
+
+<section>
+  <h2>MITO: El elegido del Fucha</h2>
+  <div class="content-block compact-block">
+    <img src="e:\Modificación pagina Rio - Emilee\pagina\Gemini_Generated_Image_2n3lwq2n3lwq2n3l.png"alt="Ilustración de un mito del lago">
+    <p>Hace mucho tiempo, Nayel, el espíritu guardián, vivía en las aguas cristalinas del río Fucha, protegiendo su pureza. Los antiguos le rendían respeto y dejaban ofrendas.
+
+Con el paso de los años, las personas olvidaron el río y lo ensuciaron. Nayel, herido y débil por el olvido, se durmió en las profundidades.
+
+Un día, Samuel, un niño curioso, encontró una caja misteriosa en el cauce. Al abrirla, fue transportado al pasado y conoció a Nayel, quien le habló del dolor del río y le entregó una piedra azul con la memoria de las aguas. "Solo quien ame de verdad este río podrá despertar su espíritu", le dijo el guardián.
+
+Samuel regresó al presente y lanzó la piedra al Fucha. Inmediatamente, el agua comenzó a brillar, los peces regresaron y se escuchó una suave melodía: la voz de Nayel.
+
+Desde aquel día, se cuenta que el río Fucha canta por las noches, y si escuchas con el corazón, oirás a Nayel recordándonos que el agua tiene memoria y debemos cuidarla.</p>
+  </div>
+</section>
+
+<h2>Galería de Los Lagos</h2>
+<div class="gallery">
+  <button class="arrow left-arrow" onclick="scrollGallery(-1)">&#10094;</button>
+  <div class="gallery-container" id="galleryContainer">
+    <img src="f:\INFINITY ART 1101\VARIOS INFINITY ART\FOTOS RIO FUCHA\29216536_10155748261758071_1587992221288759296_n.jpg">
+    <img src="e:\Modificación pagina Rio - Emilee\FOTOS RIO FUCHA\img 2 galeria rio fucha .jpg">
+    <img src="e:\Modificación pagina Rio - Emilee\pagina\30727193_10155837023533071_5791441933238796288_n.jpg ">
+    <img src=" e:\Modificación pagina Rio - Emilee\pagina\LAGUNA SANCRISTOBAL.jpg">
+    <img src="f:\INFINITY ART 1101\VARIOS INFINITY ART\FOTOS RIO FUCHA\468223206_10162440503739683_1359740640078841703_n.jpg">
+    <img src="e:\Modificación pagina Rio - Emilee\LUNA PARK 6.jpg">
+    <img src="e:\Modificación pagina Rio - Emilee\LUNA PARK 13.jpg">
+   <img src="e:\Modificación pagina Rio - Emilee\FOTOS RIO FUCHA\LUNA PARK 10.jpg">
+  </div>
+  <button class="arrow right-arrow" onclick="scrollGallery(1)">&#10095;</button>
+</div>
+
+<section class="video-section">
+  <h2>Videos del Proyecto</h2>
+  <video controls>
+    <source src="e:\Modificación pagina Rio - Emilee\pagina\video rio fucha.mp4" type="video/mp4">
+  </video>
+  <br>
+  <video controls>
+    <source src="e:\Modificación pagina Rio - Emilee\pagina\travesía del río Fucha - Bogota Participa (480p, h264).mp4" type="video/mp4">
+  </video>
+</section>
+
+<div id="game">
+  <h2>Juego Interactivo: ¡Limpia el Río Fucha!</h2>
+  <p>Arrastra los elementos que están en el rio donde pertenecen.</p>
+
+  <div id="river">
+    <div class="item" data-type="basura" data-id="botella" draggable="true" style="left:40px; top:60px;" title="Botella">🍼</div>
+    <div class="item" data-type="basura" data-id="lata" draggable="true" style="left:220px; top:120px;" title="Lata">🥫</div>
+    <div class="item" data-type="basura" data-id="basura" draggable="true" style="left:380px; top:80px;" title="Basura">💩</div>
+
+    <div class="item" data-type="bueno" data-id="pez" draggable="true" style="left:520px; top:100px;" title="Pez">🐟</div>
+    <div class="item" data-type="bueno" data-id="flor" draggable="true" style="left:660px; top:110px;" title="Flor">🌷</div>
+    <div class="item" data-type="bueno" data-id="planta" draggable="true" style="left:800px; top:90px;" title="Planta">🌱</div>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 50px; margin-top: 30px;">
+    <div id="thumbs-up" class="dropzone">👍<br><small>Si es bueno</small></div>
+    <div id="thumbs-down" class="dropzone">👎<br><small>Basura</small></div>
+  </div>
+
+  <div id="score">Aciertos: 0 | Errores: 0</div>
+
+  <div id="celebration">
+    <div style="font-size:72px">🎉🧸</div>
+    <p>¡Felicidades! Has limpiado el río 🌿</p>
+  </div>
+</div>
+
+<footer>
+  <p>Proyecto educativo: Reviviendo al Río Fucha 🌿 | 2025</p>
+</footer>
+
+<script>
+function scrollGallery(direction) {
+  const container = document.getElementById('galleryContainer');
+  const scrollAmount = direction * 300;
+  container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+}
+
+/* ---------- Juego actualizado: manejo drag & drop con emojis ---------- */
+let scoreGood = 0;
+let scoreBad = 0;
+
+const items = document.querySelectorAll('.item');
+const thumbsUp = document.getElementById('thumbs-up');
+const thumbsDown = document.getElementById('thumbs-down');
+const scoreDisplay = document.getElementById('score');
+const celebration = document.getElementById('celebration');
+
+items.forEach(item => {
+  // asignar id único si no tiene
+  if (!item.dataset.id) item.dataset.id = Math.random().toString(36).slice(2,9);
+
+  item.addEventListener('dragstart', e => {
+    e.dataTransfer.setData('id', item.dataset.id);
+    // también guardamos el tipo para comprobación rápida
+    e.dataTransfer.setData('type', item.dataset.type);
+    // estilo mientras arrastra
+    item.style.opacity = '0.5';
+  });
+
+  item.addEventListener('dragend', e => {
+    item.style.opacity = '1';
+  });
+
+  // permitir también arrastrar con touch (mobile)
+  item.addEventListener('touchstart', e => {
+    item.classList.add('dragging-touch');
+  });
+});
+
+/* zonas drop */
+[thumbsUp, thumbsDown].forEach(zone => {
+  zone.addEventListener('dragover', e => e.preventDefault());
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    const id = e.dataTransfer.getData('id');
+    const type = e.dataTransfer.getData('type');
+    handleDrop(zone, id, type);
+  });
+
+  // touch support: allow tapping zone to accept selected touch-dragged item
+  zone.addEventListener('touchmove', e => e.preventDefault());
+});
+
+/* función que maneja la lógica del drop */
+function handleDrop(zone, draggedId, draggedType) {
+  const dragged = Array.from(document.querySelectorAll('.item')).find(el => el.dataset.id === draggedId);
+  if (!dragged) return;
+
+  const zoneIsUp = zone.id === 'thumbs-up';
+  const zoneIsDown = zone.id === 'thumbs-down';
+
+  // Condición correcta:
+  if ((zoneIsUp && draggedType === 'bueno') || (zoneIsDown && draggedType === 'basura')) {
+    scoreGood++;
+    // efecto corto en la zona
+    zone.innerHTML = zoneIsUp ? "💚 ¡Muy bien!" : "✅ ¡Bien hecho!";
+    setTimeout(() => {
+      // Se actualizan los textos de las zonas de drop a los nuevos solicitados
+      zone.innerHTML = zoneIsUp ? "👍<br><small>Si es bueno</small>" : "👎<br><small>Basura</small>";
+    }, 1400);
+
+    // quitar elemento del DOM
+    dragged.remove();
+  } else {
+    scoreBad++;
+    // retroalimentación
+    const old = zone.innerHTML;
+    zone.innerHTML = "❌ Eso no corresponde";
+    setTimeout(() => old, 1200);
+    // no eliminar el elemento, se queda para volver a intentar
+  }
+
+  scoreDisplay.textContent = `Aciertos: ${scoreGood} | Errores: ${scoreBad}`;
+
+  // Si ya no quedan items, mostrar celebración
+  const remaining = document.querySelectorAll('.item').length;
+  if (remaining === 0) {
+    showCelebration();
+  }
+}
+
+/* celebración final */
+function showCelebration() {
+  celebration.style.display = 'block';
+  // opcional: pequeño efecto de subida
+  celebration.style.transform = 'translateY(10px)';
+}
+
+/* Soporte extra: permitir click en móviles para seleccionar y luego soltar en zona */
+let selectedId = null;
+document.querySelectorAll('.item').forEach(it => {
+  it.addEventListener('click', e => {
+    // selecciona / deselecciona
+    const already = it.classList.contains('selected-item');
+    document.querySelectorAll('.item').forEach(i => i.classList.remove('selected-item'));
+    if (!already) {
+      it.classList.add('selected-item');
+      selectedId = it.dataset.id;
+    } else selectedId = null;
+  });
+});
+
+// si hay un item seleccionado y se pulsa una zona, lo procesa (útil en móvil)
+thumbsUp.addEventListener('click', () => { if (selectedId) handleDrop(thumbsUp, selectedId, document.querySelector(`.item[data-id="${selectedId}"]`)?.dataset.type); });
+thumbsDown.addEventListener('click', () => { if (selectedId) handleDrop(thumbsDown, selectedId, document.querySelector(`.item[data-id="${selectedId}"]`)?.dataset.type); });
+
+</script>
+</body>
+</html>
