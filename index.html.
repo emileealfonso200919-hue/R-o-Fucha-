@@ -529,3 +529,4 @@ thumbsDown.addEventListener('click', () => { if (selectedId) handleDrop(thumbsDo
 </script>
 </body>
 </html>
+
